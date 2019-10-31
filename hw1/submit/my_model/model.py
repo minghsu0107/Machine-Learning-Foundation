@@ -65,7 +65,16 @@ class PLA():
 						self.n_updates += 1
 						self.coef_ += self.eta0 * Y[i] * X[i]
 						error = True
-
+			'''
+			i = 0
+			while (self.n_updates < self.max_iter) and (self.count_error(X, Y, self.coef_)):
+				if np.sign(X[i].dot(self.coef_) * Y[i]) <= 0:
+						self.n_updates += 1
+						self.coef_ += self.eta0 * Y[i] * X[i]
+				i += 1
+				if i == n_data:
+					i = 0
+			'''
 	def predict(self, X):
 		self.check(X)
 
