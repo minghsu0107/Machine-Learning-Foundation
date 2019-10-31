@@ -67,8 +67,8 @@ def p8():
 
 if __name__ == '__main__':
 	ap = argparse.ArgumentParser()
-	ap.add_argument("-p", "--problem", required = True,
-		help = "Problem to be solved")
+	ap.add_argument("-p", "--problem", required=True,
+					help="Problem to be solved")
 	args = vars(ap.parse_args())
 
 	prob = args["problem"]
