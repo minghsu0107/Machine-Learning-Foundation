@@ -141,7 +141,7 @@ int main() {
 	
 	logisticRegression(trainingData, weight, train_N, eta, iter);
 	printf("Ein = %f\n", calcuError(trainingData, weight, train_N));
-    printf("Eout = %f\n\n", calcuError(testData, weight, test_N));
+	printf("Eout = %f\n\n", calcuError(testData, weight, test_N));
 
-    clean();
+	clean();
 }

@@ -113,6 +113,6 @@ int main() {
 	for (int i = 0; i < DIMENSION; ++i)
 		weight.w[i] = 0;
 	logisticRegression(trainingData, weight, train_N, eta, iter);
-	cout<< "Ein = " << calcuError(trainingData, weight, train_N) << endl;
-    cout<< "Eout = " << calcuError(testData, weight, test_N) << endl;
+	cout << "Ein = " << calcuError(trainingData, weight, train_N) << endl;
+	cout << "Eout = " << calcuError(testData, weight, test_N) << endl;
 }

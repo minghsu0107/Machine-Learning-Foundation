@@ -200,10 +200,10 @@ int main() {
 	int iter = 2000;
 
 	prepocess();
-    multiclass_classifier(trainingData, weight, train_N, eta, iter);
-    printf("Ein = %lf\n", calcuError(trainingData, weight, train_N));
-    printf("Eout = %lf\n\n", calcuError(testData, weight, test_N));
+	multiclass_classifier(trainingData, weight, train_N, eta, iter);
+	printf("Ein = %lf\n", calcuError(trainingData, weight, train_N));
+	printf("Eout = %lf\n\n", calcuError(testData, weight, test_N));
 
-    show_weight();
-    clean();
+	show_weight();
+	clean();
 }
