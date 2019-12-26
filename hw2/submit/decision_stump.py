@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 
 def my_load(filename):
 	data = np.genfromtxt(filename)
-	X = data[:, :-1] #(n, m)
-	y = data[:, -1] #(n,)
+	X = data[:, :-1] # shape = (n, m)
+	y = data[:, -1] # shape = (n,)
 	return X, y
 
 def generate(n, prob=0.2):
@@ -16,8 +16,9 @@ def generate(n, prob=0.2):
 
 def get_theta(sorted_X):
 	theta = (sorted_X[1:] + sorted_X[:-1]) / 2
-	theta = np.r_[theta, sorted_X[0] - 1]
-	theta = np.r_[theta, sorted_X[-1] + 1]
+	# np.r_[[1, 2, 3], 4, 5] = ap.array([1, 2, 3, 4, 5])
+	theta = np.r_[theta, sorted_X[0] - 1] # append sorted_X[0] - 1 to theta array
+	theta = np.r_[theta, sorted_X[-1] + 1] # append sorted_X[0] + 1 to theta array
 	return theta.reshape(-1, 1)
 
 def plotHist(my_list, xlabel=None, title=None, bins=None):
@@ -38,7 +39,9 @@ def stump(X, y):
 
 	min_err = 1
 	for s in [-1, 1]:
+		# axis=1: for each row
 		error = np.sum(s * np.sign(X - theta) != y, axis=1) #(y.shape[0],)
+		# axis=0: for each column
 		min_idx = np.argmin(error, axis=0)
 		if (error[min_idx] / y.shape[0] < min_err):
 			min_err = error[min_idx] / y.shape[0]
