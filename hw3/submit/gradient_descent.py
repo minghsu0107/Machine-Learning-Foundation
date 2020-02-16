@@ -33,9 +33,15 @@ def sigmoid(s):
 	return 1 / (np.exp(-s) + 1)
 
 def gradient(X, w, y):
-	tmp1 = sigmoid(-X.dot(w) * y) # shape = (X.shape[0], X.shape[1])
+	tmp1 = sigmoid(-X.dot(w) * y) # shape = (X.shape[0], 1)
+
+	# * operands: scalar broadcast multiplication on each corresponding element
+	# not matrix multiplication
 	tmp2 = -X * y # shape = (X.shape[0], X.shape[1])
-	grad = np.mean(tmp1 * tmp2, axis=0).reshape(-1, 1)
+
+	# (tmp1 * tmp2).shape = (X.shape[0], X.shape[1])
+	grad = np.mean(tmp1 * tmp2, axis=0) # shape = (X.shape[1],)
+	grad = grad.reshape(-1, 1) # shape = (X.shape[1], 1)
 	return grad
 
 def next_batch(X, y, batch_size):
@@ -221,8 +227,10 @@ if __name__ == "__main__":
 			  'random_state': 50}
 	
 	solve1(**params)
+	'''
 	solve1(X_train, y_train, X_test, y_test, 
 		  sgd=True, batch_size=1, max_iter=10000, eta0=0.01, random_state=50)
 	solve2(X_train, y_train, X_test, y_test, random_state=50)
-	
+
 	test(X_train, y_train, X_test, y_test)
+	'''
